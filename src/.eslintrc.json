@@ -2,8 +2,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "prettier/@typescript-eslint"
+    "prettier"
   ],
   "plugins": ["@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
@@ -11,7 +10,5 @@
     "sourceType": "module"
   },
   "env": { "browser": true, "node": true, "es6": true },
-  "rules": {
-    // 適当なルール
-  }
+  "rules": {}
 }
