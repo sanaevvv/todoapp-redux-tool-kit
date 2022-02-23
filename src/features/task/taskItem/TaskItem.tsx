@@ -1,8 +1,10 @@
 import React from 'react';
 import styles from './TaskItem.module.scss';
-import { MdEventNote } from 'react-icons/md';
-import { MdModeEditOutline } from 'react-icons/md';
-import { MdDelete } from 'react-icons/md';
+import { MdEventNote, MdModeEditOutline, MdDelete } from 'react-icons/md';
+import { useModal } from 'react-hooks-use-modal';
+import { TaskForm } from '../taskForm/TaskForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleModal, selectModal } from '../taskSlice';
 
 type Props = {
   task: {
@@ -13,6 +15,10 @@ type Props = {
 };
 
 export const TaskItem: React.FC<Props> = ({ task }) => {
+  // const isModalOpen = useSelector(selectModal);
+  const [Modal, open, close, isOpen] = useModal('root', {
+    preventScroll: false, //これはオプション。デフォルトはfalse
+  });
   return (
     <div className={styles.taskWrapper}>
       <div className={styles.title}>
@@ -30,11 +36,16 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
           className={styles.checkbox}
         />
 
-        <button onClick={() => console.log(`edit ${task.id}`)}>
+        <button onClick={open}>
           <MdModeEditOutline />
         </button>
+        <Modal>
+          <div className={styles.modal}>
+            <TaskForm edit />
+          </div>
+        </Modal>
 
-        <button onClick={() => console.log(`delete ${task.id}`)}>
+        <button>
           <MdDelete />
         </button>
       </div>

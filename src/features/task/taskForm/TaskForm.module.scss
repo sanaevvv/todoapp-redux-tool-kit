@@ -1,0 +1,32 @@
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+.buttonWrapper {
+  display: grid;
+  gap: 10px;
+  margin-top: 30px;
+  .submit,
+  .cancel {
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid #4caf50;
+    font-size: 16px;
+    outline: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .submit {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  .cancel {
+    color: #4caf50;
+  }
+}
