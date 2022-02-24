@@ -4,7 +4,6 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { createTask } from '../taskSlice';
 import { useDispatch } from 'react-redux';
 import { toggleModal } from '../taskSlice';
-import Modal from 'react-modal';
 
 type Inputs = { taskTitle: string };
 type Props = { edit?: boolean };
