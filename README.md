@@ -43,9 +43,9 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+### `参考記事`
 
-※参考記事
-<Modal>
+-Modal
 https://blog.microcms.io/how-to-react-hooks-use-modal/
-<React-hook-From>
+-React-hook-From
 https://react-hook-form.com/jp/get-started

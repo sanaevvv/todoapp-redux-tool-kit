@@ -3,12 +3,16 @@ import styles from './TaskForm.module.scss';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { createTask } from '../taskSlice';
 import { useDispatch } from 'react-redux';
+import { toggleModal } from '../taskSlice';
+import Modal from 'react-modal';
 
 type Inputs = { taskTitle: string };
 type Props = { edit?: boolean };
 
 export const TaskForm: React.VFC<Props> = ({ edit }) => {
+  // const isModalOpen = useSelector(selectModal);
   const dispatch = useDispatch();
+
   const { register, handleSubmit, reset } = useForm<Inputs>();
   const handleEdit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
@@ -34,7 +38,11 @@ export const TaskForm: React.VFC<Props> = ({ edit }) => {
             Submit
           </button>
 
-          <button className={styles.cancel} type="button">
+          <button
+            className={styles.cancel}
+            onClick={() => dispatch(toggleModal(false))}
+            type="button"
+          >
             Cancel
           </button>
         </div>
