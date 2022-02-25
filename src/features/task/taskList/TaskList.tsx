@@ -1,11 +1,11 @@
 import React from 'react';
 import { TaskItem } from '../taskItem/TaskItem';
 import styles from '../taskList/TaskList.module.scss';
-import { selectTask } from '../taskSlice';
+import { selectTasks } from '../taskSlice';
 import { useSelector } from 'react-redux';
 
 export const TaskList: React.VFC = () => {
-  const tasks = useSelector(selectTask);
+  const tasks = useSelector(selectTasks);
   return (
     <div className={styles.taskListWrapper}>
       {tasks.map((task) => (

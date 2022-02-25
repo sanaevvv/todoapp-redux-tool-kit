@@ -1,4 +1,4 @@
-.taskWrapper{
+.taskWrapper {
   display: grid;
   grid-template-columns: 1fr max-content;
   align-items: center;
@@ -8,13 +8,31 @@
   padding: 10px 0;
   border-radius: 5px;
 }
-.title{
+.title {
   display: flex;
-
 }
 
-.modal{
-  background-color: #fff;
-  padding: 60px 100px;
-  border-radius: 10px;
-}
+// .content-base {
+//   background-color: #fff;
+//   padding: 60px 100px;
+//   border-radius: 10px;
+//   position: fixed;
+//   inset: 0;
+//   width: min(90%, 600px);
+//   height: max-content;
+//   margin: auto;
+// }
+
+// .overlay-after {
+//   width: min(90%, 600px);
+//   height: max-content;
+// }
+// .modal{
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 50%;
+//   height: 100%;
+//   background-color: rgba(0,0,0,0.5);
+//   z-index: 10;
+// }

@@ -3,7 +3,7 @@ import styles from './TaskItem.module.scss';
 import { MdEventNote, MdModeEditOutline, MdDelete } from 'react-icons/md';
 import { TaskForm } from '../taskForm/TaskForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleModal, selectModal } from '../taskSlice';
+import { selectTask, toggleModal, selectModal } from '../taskSlice';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
@@ -16,11 +16,25 @@ type Props = {
   };
 };
 
+const modalStyle = {
+  overlay: {
+    backgroundColor: 'rgba(0,0,0,0.85)',
+  },
+  content: {
+    backgroundColor: '#fff',
+    width: 'min(90%, 600px)',
+    height: 'max-content',
+    margin: 'auto',
+    padding: '60px 80px',
+  },
+};
+
 export const TaskItem: React.FC<Props> = ({ task }) => {
   const isModalOpen = useSelector(selectModal);
   const dispatch = useDispatch();
 
   const handleOpen = () => {
+    dispatch(selectTask(task));
     dispatch(toggleModal(true));
   };
   const handleClose = () => {
@@ -47,7 +61,21 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
         <button onClick={handleOpen}>
           <MdModeEditOutline />
         </button>
-        <Modal isOpen={isModalOpen} onRequestClose={handleClose}>
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={handleClose}
+          // overlayClassName={{
+          //   base: "overlay-base",
+          //   afterOpen: "overlay-after",
+          //   beforeClose: "overlay-before"
+          // }}
+          // className={{
+          //   base: 'content-base',
+          //   afterOpen: 'content-after',
+          //   beforeClose: 'content-before',
+          // }}
+          style={modalStyle}
+        >
           <div className={styles.modal}>
             <TaskForm edit />
           </div>

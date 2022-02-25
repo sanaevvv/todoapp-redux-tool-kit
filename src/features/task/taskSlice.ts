@@ -35,6 +35,10 @@ export const taskSlice = createSlice({
       };
       state.tasks = [newTask, ...state.tasks];
     },
+    // タスクの選択
+    selectTask: (state, action) => {
+      state.selectedTask = action.payload;
+    },
     // モーダルの開閉
     toggleModal: (state, action) => {
       state.isModalOpen = action.payload;
@@ -42,9 +46,10 @@ export const taskSlice = createSlice({
   },
 });
 
-export const { createTask, toggleModal } = taskSlice.actions;
+export const { createTask, selectTask, toggleModal } = taskSlice.actions;
 
-export const selectTask = (state: RootState) => state.task.tasks;
+export const selectTasks = (state: RootState) => state.task.tasks;
 export const selectModal = (state: RootState) => state.task.isModalOpen;
+export const selectSelectedTask = (state: RootState) => state.task.selectedTask;
 
 export default taskSlice.reducer;
