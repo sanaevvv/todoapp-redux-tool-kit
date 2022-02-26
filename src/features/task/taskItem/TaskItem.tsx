@@ -64,21 +64,11 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
         <Modal
           isOpen={isModalOpen}
           onRequestClose={handleClose}
-          // overlayClassName={{
-          //   base: "overlay-base",
-          //   afterOpen: "overlay-after",
-          //   beforeClose: "overlay-before"
-          // }}
-          // className={{
-          //   base: 'content-base',
-          //   afterOpen: 'content-after',
-          //   beforeClose: 'content-before',
-          // }}
           style={modalStyle}
         >
-          <div className={styles.modal}>
+          {/* <div className={styles.modal}> */}
             <TaskForm edit />
-          </div>
+          {/* </div> */}
         </Modal>
 
         <button>
