@@ -3,7 +3,12 @@ import styles from './TaskItem.module.scss';
 import { MdEventNote, MdModeEditOutline, MdDelete } from 'react-icons/md';
 import { TaskForm } from '../taskForm/TaskForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTask, toggleModal, selectModal } from '../taskSlice';
+import {
+  selectTask,
+  toggleModal,
+  selectModal,
+  completeTask,
+} from '../taskSlice';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
@@ -53,7 +58,7 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
       <div className={styles.rightItems}>
         <input
           checked={task.completed}
-          onClick={() => console.log(`check ${task.id}`)}
+          onClick={() => dispatch(completeTask(task))}
           type="checkbox"
           className={styles.checkbox}
         />
@@ -61,14 +66,13 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
         <button onClick={handleOpen}>
           <MdModeEditOutline />
         </button>
+
         <Modal
           isOpen={isModalOpen}
           onRequestClose={handleClose}
           style={modalStyle}
         >
-          {/* <div className={styles.modal}> */}
-            <TaskForm edit />
-          {/* </div> */}
+          <TaskForm edit />
         </Modal>
 
         <button>

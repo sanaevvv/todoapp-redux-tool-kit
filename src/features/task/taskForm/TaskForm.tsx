@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './TaskForm.module.scss';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { createTask } from '../taskSlice';
@@ -14,11 +13,11 @@ type Inputs = { taskTitle: string };
 type Props = { edit?: boolean };
 
 export const TaskForm: React.VFC<Props> = ({ edit }) => {
-  // const isModalOpen = useSelector(selectModal);
   const dispatch = useDispatch();
   const selectedTask = useSelector(selectSelectedTask);
 
   const { register, handleSubmit, reset } = useForm<Inputs>();
+
   const handleEdit: SubmitHandler<Inputs> = (data) => {
     const sendData = {
       ...selectTask,
@@ -28,8 +27,9 @@ export const TaskForm: React.VFC<Props> = ({ edit }) => {
     dispatch(toggleModal(false));
   };
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    // console.log(data);
-    dispatch(createTask(data));
+    console.log(data);
+
+    dispatch(createTask(data.taskTitle));
     reset();
   };
   return (
@@ -42,7 +42,7 @@ export const TaskForm: React.VFC<Props> = ({ edit }) => {
           value={edit ? selectedTask.title : ''}
         />
       ) : (
-        <input className={styles.input} />
+        <input className={styles.input} {...register('taskTitle')} />
       )}
 
       {edit ? (

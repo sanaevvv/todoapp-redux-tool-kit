@@ -47,14 +47,23 @@ export const taskSlice = createSlice({
         task.title = title;
       }
     },
+    // タスクの完了・未完了フラグ
+    completeTask: (state, action) => {
+      const { id } = action.payload;
+      const task = state.tasks.find((t) => t.id === id);
+      if (task) {
+        task.completed = !task.completed;
+      }
+    },
     // モーダルの開閉
     toggleModal: (state, action) => {
       state.isModalOpen = action.payload;
-    }
+    },
   },
 });
 
-export const { createTask, selectTask, editTask, toggleModal } = taskSlice.actions;
+export const { createTask, selectTask, editTask, completeTask, toggleModal } =
+  taskSlice.actions;
 
 export const selectTasks = (state: RootState) => state.task.tasks;
 export const selectModal = (state: RootState) => state.task.isModalOpen;
