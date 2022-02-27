@@ -9,6 +9,7 @@ import {
   selectSelectedTask,
 } from '../taskSlice';
 
+
 type Inputs = { taskTitle: string };
 type Props = { edit?: boolean };
 

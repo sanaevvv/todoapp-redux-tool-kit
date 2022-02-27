@@ -47,6 +47,11 @@ export const taskSlice = createSlice({
         task.title = title;
       }
     },
+    // タスクの削除
+    deleteTask: (state, action) => {
+      const { id } = action.payload;
+      state.tasks = state.tasks.filter((t) => t.id !== id);
+    },
     // タスクの完了・未完了フラグ
     completeTask: (state, action) => {
       const { id } = action.payload;
@@ -62,8 +67,14 @@ export const taskSlice = createSlice({
   },
 });
 
-export const { createTask, selectTask, editTask, completeTask, toggleModal } =
-  taskSlice.actions;
+export const {
+  createTask,
+  selectTask,
+  editTask,
+  deleteTask,
+  completeTask,
+  toggleModal,
+} = taskSlice.actions;
 
 export const selectTasks = (state: RootState) => state.task.tasks;
 export const selectModal = (state: RootState) => state.task.isModalOpen;

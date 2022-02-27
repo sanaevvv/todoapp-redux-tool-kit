@@ -8,6 +8,7 @@ import {
   toggleModal,
   selectModal,
   completeTask,
+  deleteTask,
 } from '../taskSlice';
 import Modal from 'react-modal';
 
@@ -75,7 +76,7 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
           <TaskForm edit />
         </Modal>
 
-        <button>
+        <button onClick={() => dispatch(deleteTask(task))}>
           <MdDelete />
         </button>
       </div>
