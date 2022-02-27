@@ -49,3 +49,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 https://blog.microcms.io/how-to-react-hooks-use-modal/
 -React-hook-From
 https://react-hook-form.com/jp/get-started
+-Firebase v9
+https://zenn.dev/nash/articles/6e18bd94eca63e
